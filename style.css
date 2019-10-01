@@ -1,0 +1,37 @@
+body {
+  background-color: black;
+  font-family: sans-serif;
+}
+figure {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.nav-btn {
+  width: 200px;
+  font-size: 20px;
+}
+
+#logo {
+  font-family: "Bangers", cursive;
+  font-size: 2em;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: 105px;
+  left: -4%;
+}
+.logo {
+  background-repeat: no-repeat;
+  background-image: url(logo.png);
+  background-size: 100%;
+  background-position: center;
+  width: 450px;
+  height: 300px;
+  margin: auto;
+  text-align: center;
+}
