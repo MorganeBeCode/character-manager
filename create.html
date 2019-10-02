@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Create</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container logo">
+        <span id="logo"> Character <br /> Manager </span>
+    </div>
+    <nav class="navbar navbar-dark p-0 mt-5 mb-5 justify-content-around">
+        <a href="index.html" class="btn btn-dark nav-btn p-2">Home</a>
+        <a href="" class="btn btn-dark nav-btn p-2">Login</a>
+    </nav>
+    <div class="container">
+        <div id="target" class="row">
+            <div class="col-sm">
+                <form id="create" class="mt-5 mb-5" action="#">
+                    <div class="form-group">
+                        <label for="name">Character name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="shortDesc">Short Description</label>
+                        <input type="text" class="form-control" id="shortDesc"
+                            placeholder="Enter a short description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Long Description</label>
+                        <input type="text" class="form-control" id="desc" placeholder="Enter a long description" />
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control-file" id="image" />
+                    </div>
+                    <button id="post" type="submit" class="btn btn-dark">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="bundleCreate.js"></script>
+</body>
+
+</html>

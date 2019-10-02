@@ -35,3 +35,12 @@ img {
   margin: auto;
   text-align: center;
 }
+label {
+  color: #707070;
+}
+.form-control-file {
+  color: #707070;
+}
+#desc {
+  height: 100px;
+}
