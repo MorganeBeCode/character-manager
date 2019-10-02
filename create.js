@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -37,41 +37,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var axios_1 = require("axios");
-var nameInput = document.getElementById("name");
-var shortInput = document.getElementById("shortDesc");
-var descInput = document.getElementById("desc");
 var createForm = document.getElementById("create");
-createForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    postUser();
-});
-function postUser() {
+function postUser(data) {
     return __awaiter(this, void 0, void 0, function () {
-        var response, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios_1["default"]
-                            .post("https://character-database.becode.xyz/characters", {
-                            name: nameInput.value,
-                            shortDescription: shortInput.value,
-                            description: descInput.value
-                            //   image: 'https://source.unsplash.com/random'
-                        })
-                            .then(function (response) {
-                            console.log(response);
-                            return response;
-                        })];
-                case 1:
-                    response = _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    console.error(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                case 0: return [4 /*yield*/, axios_1["default"].post("https://character-database.becode.xyz/characters", data)];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     });
 }
+createForm.addEventListener("submit", function () {
+    var name = document.getElementById("name");
+    var shortdesc = document.getElementById("shortDesc");
+    var longdesc = document.getElementById("desc");
+    var image = document.querySelector("#image").files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        var str = reader.result.split(",");
+        var data = {
+            name: name,
+            description: longdesc,
+            shortDescription: shortdesc,
+            image: str[1]
+        };
+        postUser(data).then(function () {
+            window.location.href = "../";
+        });
+    };
+    reader.readAsDataURL(image);
+});

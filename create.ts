@@ -12,23 +12,19 @@ createForm.addEventListener("submit", function() {
   const name = <HTMLInputElement>document.getElementById("name");
   const shortdesc = <HTMLInputElement>document.getElementById("shortDesc");
   const longdesc = <HTMLInputElement>document.getElementById("desc");
-  const imageElement: any = <HTMLInputElement>document.querySelector("#image");
-  if (imageElement.files && imageElement.files[0]) {
-    let reader = new FileReader();
-    reader.onloadend = function() {
-      if (typeof reader.result == "string") {
-        let str = reader.result.split(",");
-        const data = {
-          name: name,
-          description: longdesc,
-          shortDescription: shortdesc,
-          image: str[1]
-        };
-        postUser(data).then(() => {
-          window.location.href = "../";
-        });
-      }
+  const image = (<HTMLInputElement>document.querySelector("#image")).files[0];
+  let reader = new FileReader();
+  reader.onloadend = function() {
+    let str = (<string>reader.result).split(",");
+    const data = {
+      name: name,
+      description: longdesc,
+      shortDescription: shortdesc,
+      image: str[1]
     };
-    reader.readAsDataURL(imageElement);
-  }
+    postUser(data).then(() => {
+      window.location.href = "../";
+    });
+  };
+  reader.readAsDataURL(image);
 });
