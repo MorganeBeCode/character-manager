@@ -1,31 +1,32 @@
 import axios from "axios";
-
-let nameInput = <HTMLInputElement>document.getElementById("name");
-let shortInput = <HTMLInputElement>document.getElementById("shortDesc");
-let descInput = <HTMLInputElement>document.getElementById("desc");
-let imageInput = <HTMLInputElement>document.getElementById("image");
 const createForm = <HTMLInputElement>document.getElementById("create");
 
-createForm.addEventListener("submit", function(e) {
-  e.preventDefault();
-  postUser();
-});
-
-async function postUser() {
-  try {
-    const response = await axios
-      .post("https://character-database.becode.xyz/characters", {
-        name: nameInput.value,
-        shortDescription: shortInput.value,
-        description: descInput.value,
-        image: imageInput.value
-        //   image: 'https://source.unsplash.com/random'
-      })
-      .then(response => {
-        console.log(response);
-        return response;
-      });
-  } catch (error) {
-    console.error(error);
-  }
+async function postUser(data: any) {
+  return await axios.post(
+    `https://character-database.becode.xyz/characters`,
+    data
+  );
 }
+
+createForm.addEventListener("submit", function() {
+  const name = <HTMLInputElement>document.getElementById("name");
+  const shortdesc = <HTMLInputElement>document.getElementById("shortDesc");
+  const longdesc = <HTMLInputElement>document.getElementById("desc");
+  const imageElement: any = <HTMLInputElement>document.querySelector("#image");
+  if (imageElement.files && imageElement.files[0]) {
+    let reader = new FileReader();
+    reader.onloadend = function() {
+      if (typeof reader.result == "string") {
+        let str = reader.result.split(",");
+        const data = {
+          name: name,
+          description: longdesc,
+          shortDescription: shortdesc,
+          image: str[1]
+        };
+        postUser(data);
+      }
+      reader.readAsDataURL(imageElement);
+    };
+  }
+});
