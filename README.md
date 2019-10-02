@@ -25,5 +25,5 @@
 ### Edition :
 - Non implémenté
 
-### Supression :
+### Suppression :
 - Non implémenté
