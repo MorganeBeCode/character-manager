@@ -24,9 +24,11 @@ createForm.addEventListener("submit", function() {
           shortDescription: shortdesc,
           image: str[1]
         };
-        postUser(data);
+        postUser(data).then(() => {
+          window.location.href = "../";
+        });
       }
-      reader.readAsDataURL(imageElement);
     };
+    reader.readAsDataURL(imageElement);
   }
 });
