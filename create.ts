@@ -3,6 +3,7 @@ import axios from "axios";
 let nameInput = <HTMLInputElement>document.getElementById("name");
 let shortInput = <HTMLInputElement>document.getElementById("shortDesc");
 let descInput = <HTMLInputElement>document.getElementById("desc");
+let imageInput = <HTMLInputElement>document.getElementById("image");
 const createForm = <HTMLInputElement>document.getElementById("create");
 
 createForm.addEventListener("submit", function(e) {
@@ -16,7 +17,8 @@ async function postUser() {
       .post("https://character-database.becode.xyz/characters", {
         name: nameInput.value,
         shortDescription: shortInput.value,
-        description: descInput.value
+        description: descInput.value,
+        image: imageInput.value
         //   image: 'https://source.unsplash.com/random'
       })
       .then(response => {
